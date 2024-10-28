@@ -8,7 +8,8 @@ setup(
         "dagster-cloud",
         "pandas",
         "scikit-learn",
-        "html5lib"
+        "html5lib",
+        "beautifulsoup4"
     ],
     extras_require={"dev": ["dagster-webserver", "pytest"]},
 )
