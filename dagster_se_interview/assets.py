@@ -6,7 +6,9 @@ from sklearn.linear_model import LinearRegression as Regression
 def country_stats() -> DataFrame:
     """ Raw country population data """
     df = read_html("https://tinyurl.com/mry64ebh", flavor='html5lib')[0]
-    df.columns = ["country", "continent", "region", "pop_2022", "pop_2023", "pop_change"]
+    print(df.head())
+    df.columns = ["country", "pop_2022", "pop_2023", "pop_change", "continent", "region"]
+    # df.columns = ["country", "continent", "region", "pop_2022", "pop_2023", "pop_change"]
     df["pop_change"] = ((to_numeric(df["pop_2023"]) / to_numeric(df["pop_2022"])) - 1)*100
     return df
 
@@ -41,3 +43,7 @@ def continent_stats(country_stats: DataFrame, change_model: Regression) -> DataF
     )
     
     return continent_summary
+
+if __name__ == "__main__":
+    result = country_stats()
+    print(result)
